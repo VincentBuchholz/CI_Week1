@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -52,7 +53,6 @@ public class UserMapperTest {
     public void getUserByName() throws ClassNotFoundException {
         UserMapper userMapper = new UserMapper();
 
-
         User user;
 
         user = userMapper.getUserByID(1);
@@ -63,7 +63,17 @@ public class UserMapperTest {
         assertEquals("40404040",user.getPhone());
         assertEquals("Rolighedsvej 3",user.getAddress());
 
+    }
 
+    @Test
+    public void getAllUsersTest() throws ClassNotFoundException {
+        UserMapper userMapper = new UserMapper();
+        List<User> actual = userMapper.getAllUsers();
 
+        assertEquals(11,actual.size());
+//        for (int i = 0; i < actual.size()-1; i++) {
+//            assertEquals(expected.get(i).getFirstName(),actual.get(i).getFirstName());
+//            assertEquals(expected.get(i).getLastName(),actual.get(i).getLastName());
+//        }
     }
 }
