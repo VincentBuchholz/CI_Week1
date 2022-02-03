@@ -14,7 +14,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserMapperTest {
-    int amountOfUsersAdded = 0;
 
     @BeforeEach
     void setUp() {
@@ -45,12 +44,18 @@ public class UserMapperTest {
             e.printStackTrace();
         }
 
-        amountOfUsersAdded++;
-
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown() throws ClassNotFoundException {
+        try(Connection conn = DBconnector.connection();
+            Statement stmt = conn.createStatement();
+        ) {
+            String sql = "DROP TABLE usertable";
+            stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -59,7 +64,7 @@ public class UserMapperTest {
 
         User user;
 
-        user = userMapper.getUserByID(3);
+        user = userMapper.getUserByID(1);
 
         assertEquals("Hans",user.getFirstName());
         assertEquals("Hansen",user.getLastName());
@@ -74,7 +79,7 @@ public class UserMapperTest {
         UserMapper userMapper = new UserMapper();
         List<User> actual = userMapper.getAllUsers();
 
-        assertEquals(amountOfUsersAdded,actual.size());
+        assertEquals(1,actual.size());
 //        for (int i = 0; i < actual.size()-1; i++) {
 //            assertEquals(expected.get(i).getFirstName(),actual.get(i).getFirstName());
 //            assertEquals(expected.get(i).getLastName(),actual.get(i).getLastName());
