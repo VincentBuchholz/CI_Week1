@@ -70,7 +70,7 @@ public class UserMapperTest {
         UserMapper userMapper = new UserMapper();
         List<User> actual = userMapper.getAllUsers();
 
-        assertEquals(2,actual.size());
+        assertEquals(1,actual.size());
 //        for (int i = 0; i < actual.size()-1; i++) {
 //            assertEquals(expected.get(i).getFirstName(),actual.get(i).getFirstName());
 //            assertEquals(expected.get(i).getLastName(),actual.get(i).getLastName());
