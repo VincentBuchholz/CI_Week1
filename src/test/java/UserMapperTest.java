@@ -50,12 +50,12 @@ public class UserMapperTest {
     }
 
     @Test
-    public void getUserByName() throws ClassNotFoundException {
+    public void getUserByID() throws ClassNotFoundException {
         UserMapper userMapper = new UserMapper();
 
         User user;
 
-        user = userMapper.getUserByID(1);
+        user = userMapper.getUserByID(3);
 
         assertEquals("Hans",user.getFirstName());
         assertEquals("Hansen",user.getLastName());
@@ -75,5 +75,20 @@ public class UserMapperTest {
 //            assertEquals(expected.get(i).getFirstName(),actual.get(i).getFirstName());
 //            assertEquals(expected.get(i).getLastName(),actual.get(i).getLastName());
 //        }
+    }
+
+    @Test
+    public void updateUserTest() throws ClassNotFoundException {
+        UserMapper userMapper = new UserMapper();
+
+        userMapper.updateUser(4,"Erik","Larsen","1234","40404040","Ulrikkenborg Alle 33");
+
+        User user = userMapper.getUserByID(4);
+
+        assertEquals("Erik",user.getFirstName());
+        assertEquals("Larsen",user.getLastName());
+        assertEquals("1234",user.getPassword());
+        assertEquals("40404040",user.getPhone());
+        assertEquals("Ulrikkenborg Alle 33",user.getAddress());
     }
 }

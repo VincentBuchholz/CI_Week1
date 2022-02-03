@@ -69,4 +69,34 @@ public class UserMapper {
         }
         return userList;
     }
+
+    public void updateUser(int userID, String firstName, String lastName, String password, String phone, String address) throws ClassNotFoundException {
+
+        try (Connection connection = DBconnector.connection()) {
+
+            String sql = "UPDATE usertable SET fname =?, lname =?, pw=?, phone =?, address =? WHERE id =?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+
+                ps.setString(1,firstName);
+                ps.setString(2,lastName);
+                ps.setString(3,password);
+                ps.setString(4,phone);
+                ps.setString(5,address);
+                ps.setInt(6,userID);
+
+
+                int result = ps.executeUpdate();
+
+
+
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
