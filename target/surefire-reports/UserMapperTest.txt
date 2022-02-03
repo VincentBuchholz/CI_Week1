@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: UserMapperTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.133 s <<< FAILURE! - in UserMapperTest
+getAllUsersTest  Time elapsed: 0.11 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "actual" is null
+	at UserMapperTest.getAllUsersTest(UserMapperTest.java:73)
+
+updateUserTest  Time elapsed: 0.013 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "enteties.User.getFirstName()" because "user" is null
+	at UserMapperTest.updateUserTest(UserMapperTest.java:88)
+
+getUserByID  Time elapsed: 0.008 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "enteties.User.getFirstName()" because "user" is null
+	at UserMapperTest.getUserByID(UserMapperTest.java:60)
+

@@ -26,7 +26,7 @@ jobs:
           mysql user: 'dev' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
           # mysql password: ${{ secrets.DatabasePassword }} # Required if "mysql user" exists. The password for the "mysql user"
           mysql password: 'ax2'
-#      - name: Build with Maven
-#        run: mvn --batch-mode --update-snapshots verify
-#      - name: Maven deploy
-#        run: mvn -Dremote.user=${{ secrets.REMOTE_USER }} -Dremote.password=${{ secrets.REMOTE_PW }} tomcat7:deploy
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots verify
+      - name: Maven deploy
+        run: mvn -Dremote.user=${{ secrets.REMOTE_USER }} -Dremote.password=${{ secrets.REMOTE_PW }} tomcat7:deploy
